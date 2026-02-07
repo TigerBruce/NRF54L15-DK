@@ -12,6 +12,16 @@
 	status = "disabled";
 };
 
+/*
+ * 让 P1.13（BUTTON0）使用低功耗 SENSE 边沿检测
+ * 而非 GPIOTE 通道（GPIOTE 通道需要 HFCLK 持续运行 ~300µA）
+ * SENSE 机制使用 32.768kHz 时钟采样，空闲时 HFCLK 可关闭
+ * BIT(13) = 0x2000
+ */
+&gpio1 {
+	sense-edge-mask = <0x2000>;
+};
+
 /* 启用 TIMER20 和 TIMER21，用于 DPPI 硬件链路 */
 &timer20 {
 	status = "okay";
