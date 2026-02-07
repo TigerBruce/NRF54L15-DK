@@ -1,0 +1,22 @@
+/* 关闭射频电源域（Domain 1），用于功耗测试 */
+
+&radio {
+	status = "disabled";
+};
+
+&ieee802154 {
+	status = "disabled";
+};
+
+&bt_hci_sdc {
+	status = "disabled";
+};
+
+/* 启用 TIMER20 和 TIMER21，用于 DPPI 硬件链路 */
+&timer20 {
+	status = "okay";
+};
+
+&timer21 {
+	status = "okay";
+};
