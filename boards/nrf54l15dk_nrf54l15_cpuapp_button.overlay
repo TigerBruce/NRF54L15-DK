@@ -1,0 +1,13 @@
+/* 关闭 RADIO，仅用于 main.c 按钮低功耗 demo */
+
+&radio {
+	status = "disabled";
+};
+
+&ieee802154 {
+	status = "disabled";
+};
+
+&bt_hci_sdc {
+	status = "disabled";
+};

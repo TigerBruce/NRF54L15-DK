@@ -1,16 +1,8 @@
-/* 关闭射频电源域（Domain 1），用于功耗测试 */
-
-&radio {
-	status = "disabled";
-};
-
-&ieee802154 {
-	status = "disabled";
-};
-
-&bt_hci_sdc {
-	status = "disabled";
-};
+/*
+ * 默认 overlay：不关闭 RADIO，供 main2.c（BLE 从机）使用。
+ * 构建 main.c 按钮 demo 且要关 RADIO 时请用：
+ *   -DOVERLAY_FILE=boards/nrf54l15dk_nrf54l15_cpuapp_button.overlay
+ */
 
 /*
  * 让 P1.13（BUTTON0）使用低功耗 SENSE 边沿检测
@@ -20,13 +12,4 @@
  */
 &gpio1 {
 	sense-edge-mask = <0x2000>;
-};
-
-/* 启用 TIMER20 和 TIMER21，用于 DPPI 硬件链路 */
-&timer20 {
-	status = "okay";
-};
-
-&timer21 {
-	status = "okay";
 };

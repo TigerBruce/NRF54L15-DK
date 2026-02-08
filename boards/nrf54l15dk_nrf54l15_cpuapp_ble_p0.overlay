@@ -1,0 +1,16 @@
+/*
+ * BLE 控制 P0.04 翻转用 overlay
+ * 不关闭 RADIO/BT，不启用 PERI 域 TIMER20/21、GPIOTE20
+ * P0.04 通过 LP 域（gpio0）控制
+ */
+/ {
+	aliases {
+		led-p0-04 = &led_p0_04;
+	};
+	led_p0_04: led_p0_04 {
+		compatible = "gpio-leds";
+		gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+/* 不启用 PERI 域定时器/GPIOTE20，保持与主 overlay 的 sense-edge 等可按需叠加 */
